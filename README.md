@@ -28,7 +28,7 @@ Currently tested on Ubuntu 20.04 under ROS2 Galactic.
 Set the following shell variables:
 ```bash
 repo=frequency_cam
-url=https://github.com/berndpfrommer/${repo}.git
+url=https://github.com/ros-event-camera/${repo}.git
 ```
 and follow the [instructions here](https://github.com/ros-misc-utilities/.github/blob/master/docs/build_ros_repository.md)
 
