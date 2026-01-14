@@ -16,7 +16,7 @@
 #ifndef FREQUENCY_CAM__FREQUENCY_CAM_H_
 #define FREQUENCY_CAM__FREQUENCY_CAM_H_
 
-#include <event_camera_codecs/event_processor.h>
+//#include <event_camera_codecs/event_processor.h>
 
 #include <cstdint>
 #include <fstream>
@@ -27,7 +27,7 @@
 
 namespace frequency_cam
 {
-class FrequencyCam : public event_camera_codecs::EventProcessor
+class FrequencyCam
 {
 public:
   FrequencyCam() {}
@@ -37,16 +37,16 @@ public:
   FrequencyCam & operator=(const FrequencyCam &) = delete;
 
   // ------------- inherited from EventProcessor
-  inline void eventCD(uint64_t sensor_time, uint16_t ex, uint16_t ey, uint8_t polarity) override
+  inline void eventCD(uint64_t sensor_time, uint16_t ex, uint16_t ey, uint8_t polarity)
   {
     Event e(shorten_time(sensor_time), ex, ey, polarity);
     updateState(&state_[e.y * width_ + e.x], e);
     lastEventTime_ = e.t;
     eventCount_++;
   }
-  bool eventExtTrigger(uint64_t, uint8_t, uint8_t) override { return (true); }
-  void finished() override {}
-  void rawData(const char *, size_t) override {}
+  bool eventExtTrigger(uint64_t, uint8_t, uint8_t) { return (true); }
+  void finished() {} // stubbed out
+  void rawData(const char *, size_t) {}
   // ------------- end of inherited from EventProcessor
 
   bool initialize(

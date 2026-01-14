@@ -1,0 +1,7 @@
+[build-system]
+requires = ["scikit-build-core", "nanobind", "ninja"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "freqcam_ext"
+version = "0.1.0"
